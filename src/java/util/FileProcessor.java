@@ -1,3 +1,5 @@
+package util;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,32 +18,17 @@ public class FileProcessor {
 
         return folder.exists();
     }
-    public static void deleteFolder(String folderpath) {
-        File folder = new File(folderpath);
-
-        if(folder.exists()){
-            for (File file:folder.listFiles()){
-                file.delete();
-            }
-            folder.delete();
-            System.out.println("Folder deleted:" + folderpath);
-        }
-    }
     public static void createFile(String filepath) {
         File obj = new File(filepath);
 
         try{
-            if(obj.createNewFile()){
-                System.out.println("Folder created:" + obj);
-            }else{
-                System.out.println("File already exists");
-            }
+            obj.createNewFile();
         } catch(IOException e){
             e.printStackTrace();
         }
     }
-    public static void writeFile(String filepath, String[] lines) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filepath))){
+    public static void writeFile(String filepath, String[] lines, boolean flagA) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filepath, flagA))){
             for(String line:lines){
                 writer.write(line);
                 writer.newLine();
@@ -50,6 +37,7 @@ public class FileProcessor {
             System.err.println("error"+e.getMessage());
         }
     }
+    
     public static String[] readFile(String filepath) {
         ArrayList<String> lines = new ArrayList<>();
 
@@ -60,7 +48,6 @@ public class FileProcessor {
             while (reader.hasNextLine()) {
                 String line = reader.nextLine();
                 lines.add(line);
-                System.err.println(line); // Optional: remove if you don't want to print
             }
 
             reader.close();
@@ -70,24 +57,5 @@ public class FileProcessor {
         }
 
         return lines.toArray(new String[0]);
-    }
-
-    public static void renameFile(String oldpath, String newpath) {
-        File oldfile = new File(oldpath);
-        File newfile = new File(newpath);
-        if(oldfile.renameTo(newfile)){
-            System.err.println("file renamed");
-        }else{
-            System.err.println("cannot be renamed");
-        }
-    }
-    public static void deleteFile(String filepath) {
-        File obj = new File(filepath);
-        if (obj.delete()){
-            System.err.println("deleted"+obj.getName());
-        }else{
-            System.err.println("failed todeleted"+obj.getName());
-        }
-       
     }
 }
