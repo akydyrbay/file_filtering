@@ -15,3 +15,5 @@ javac -d "$OUT_DIR" "$SRC_DIR"/util/*.java
 
 echo "Packaging into $JAR_NAME..."
 jar cfe "$JAR_NAME" "$MAIN_CLASS" -C "$OUT_DIR" .
+
+echo "Ready for testing!"

@@ -13,19 +13,18 @@ public class FileContent{
 
     public static FileContent ReadContent(OptionsCMD opts){
         FileContent c = new FileContent();
-        FileProcessor f = new FileProcessor();
         if (opts.flagIn1 && opts.flagIn2) {
-            c.in1 = f.readFile(opts.in1path);
-            c.in2 = f.readFile(opts.in2path);
+            c.in1 = FileProcessor.readFile(opts.in1path);
+            c.in2 = FileProcessor.readFile(opts.in2path);
             c.lines = new String[c.in1.length+c.in2.length];
 
             System.arraycopy(c.in1, 0, c.lines, 0, c.in1.length);
             System.arraycopy(c.in2, 0, c.lines, c.in1.length, c.in2.length);
         }else if(opts.flagIn1 && !opts.flagIn2){
-            c.in1 = f.readFile(opts.in1path);
+            c.in1 = FileProcessor.readFile(opts.in1path);
             c.lines = c.in1;
         }else if(!opts.flagIn1 && opts.flagIn2){
-            c.in2 = f.readFile(opts.in2path);
+            c.in2 = FileProcessor.readFile(opts.in2path);
             c.lines = c.in2;
         }
         for (String line : c.lines){
@@ -46,7 +45,7 @@ public class FileContent{
             return false;
         }
         try {
-            Integer.parseInt(line);
+            int _ = Integer.parseInt(line);
             return true;
         } catch (NumberFormatException e) {
             return false;
@@ -55,7 +54,7 @@ public class FileContent{
     public static boolean isLong(String line) {
         if (line == null || line.isEmpty()) return false;
         try {
-            Long.parseLong(line);
+            long _ = Long.parseLong(line);
             return true;
         } catch (NumberFormatException e) {
             return false;
@@ -66,7 +65,7 @@ public class FileContent{
             return false;
         }
         try {
-            Float.parseFloat(line);
+            float _ = Float.parseFloat(line);
             return true;
         } catch (NumberFormatException e) {
             return false;

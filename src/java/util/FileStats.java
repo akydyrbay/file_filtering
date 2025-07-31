@@ -2,13 +2,13 @@ package util;
 
 public class FileStats{
     public static void PrintStats(OptionsCMD opts, FileContent c){
-        String[] intRes = statInt(c.ints.toArray(new String[0]));
-        String[] floatRes = statFloat(c.floats.toArray(new String[0]));
-        String[] stringRes = statString(c.strings.toArray(new String[0]));
+        String[] intRes = statInt(c.ints.toArray(String[]::new));
+        String[] floatRes = statFloat(c.floats.toArray(String[]::new));
+        String[] stringRes = statString(c.strings.toArray(String[]::new));
 
-        int intNum = c.ints.toArray(new String[0]).length;
-        int floatNum = c.floats.toArray(new String[0]).length;
-        int stringNum = c.strings.toArray(new String[0]).length;
+        int intNum = c.ints.toArray(String[]::new).length;
+        int floatNum = c.floats.toArray(String[]::new).length;
+        int stringNum = c.strings.toArray(String[]::new).length;
 
         if(opts.flagS){
             System.out.println("Num Of Ints: "+intNum);

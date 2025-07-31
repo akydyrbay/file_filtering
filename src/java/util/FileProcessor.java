@@ -24,7 +24,7 @@ public class FileProcessor {
         try{
             obj.createNewFile();
         } catch(IOException e){
-            e.printStackTrace();
+            System.err.println("error: "+e.getMessage());
         }
     }
     public static void writeFile(String filepath, String[] lines, boolean flagA) {
@@ -34,28 +34,23 @@ public class FileProcessor {
                 writer.newLine();
             }
         } catch(IOException e){
-            System.err.println("error"+e.getMessage());
+            System.err.println("error: "+e.getMessage());
         }
     }
     
     public static String[] readFile(String filepath) {
         ArrayList<String> lines = new ArrayList<>();
 
-        try {
-            File file = new File(filepath);
-            Scanner reader = new Scanner(file);
-
+        try (Scanner reader = new Scanner(new File(filepath))) {
             while (reader.hasNextLine()) {
                 String line = reader.nextLine();
                 lines.add(line);
             }
-
-            reader.close();
         } catch (FileNotFoundException e) {
             System.err.println("Error while reading the file:");
-            e.printStackTrace();
+            System.err.println("error: "+e.getMessage());
         }
 
-        return lines.toArray(new String[0]);
+        return lines.toArray(String[]::new);
     }
 }
