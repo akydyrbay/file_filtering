@@ -6,9 +6,6 @@ MAIN_CLASS="util.Main"
 JAR_NAME="util.jar"
 INPUT_ARGS="-s -a -p sample- in1.txt in2.txt"
 
-echo "Cleaning previous build..."
-rm -rf "$OUT_DIR" "$JAR_NAME"
-
 echo "Compiling source files..."
 mkdir -p "$OUT_DIR"
 javac -d "$OUT_DIR" "$SRC_DIR"/util/*.java
