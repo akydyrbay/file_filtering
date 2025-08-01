@@ -10,14 +10,11 @@ public class FileProcessor {
 
         if(!folder.exists()){
             folder.mkdir();
-            System.out.println("Folder created:" + folderpath);
+        }else{
+            throw new IllegalArgumentException("Not a directory");
         }
     }
-    public static boolean checkFolder(String folderpath) {
-        File folder = new File(folderpath);
 
-        return folder.exists();
-    }
     public static void createFile(String filepath) {
         File obj = new File(filepath);
 
@@ -27,18 +24,24 @@ public class FileProcessor {
             System.err.println("error: "+e.getMessage());
         }
     }
+
     public static void writeFile(String filepath, String[] lines, boolean flagA) {
+        File file = new File(filepath);
+        boolean fileHasContent = file.exists() && file.length() > 0;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filepath, flagA))){
-            for(String line:lines){
-                writer.write(line);
-                writer.newLine();
+            if(flagA && fileHasContent) writer.newLine();
+            for (int i = 0; i < lines.length; i++) {
+                writer.write(lines[i]);
+                if (i < lines.length - 1) {
+                    writer.newLine();  
+                }
             }
         } catch(IOException e){
             System.err.println("error: "+e.getMessage());
         }
     }
     
-    public static String[] readFile(String filepath) {
+    public static ArrayList<String> readFile(String filepath) {
         ArrayList<String> lines = new ArrayList<>();
 
         try (Scanner reader = new Scanner(new File(filepath))) {
@@ -51,6 +54,6 @@ public class FileProcessor {
             System.err.println("error: "+e.getMessage());
         }
 
-        return lines.toArray(String[]::new);
+        return lines;
     }
 }

@@ -1,4 +1,5 @@
 package util;
+import java.util.ArrayList;
 
 public class OptionsCMD {
     public boolean flagO = false;
@@ -6,11 +7,9 @@ public class OptionsCMD {
     public boolean flagA = false;
     public boolean flagS = false;
     public boolean flagF = false;
-    public boolean flagIn1 = false;
-    public boolean flagIn2 = false;
+    public boolean flagIn = false;
 
-    public String in1path = "";
-    public String in2path = "";
+    public ArrayList<String> inpath = new ArrayList<>();;
     public String oPath = "";
     public String pPath = "";
     
@@ -38,13 +37,11 @@ public class OptionsCMD {
                 case "-a" -> opt.flagA = true;
                 case "-s" -> opt.flagS = true;
                 case "-f" -> opt.flagF = true;
-                case "in1.txt" -> {
-                    opt.flagIn1 = true;
-                    opt.in1path = "inputFiles/in1.txt";
-                }
-                case "in2.txt" -> {
-                    opt.flagIn2 = true;
-                    opt.in2path = "inputFiles/in2.txt";
+                default ->{
+                    if (args[i].endsWith(".txt")) {
+                        opt.flagIn = true;
+                        opt.inpath.add(args[i]);
+                    }
                 }
             }
         }

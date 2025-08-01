@@ -6,6 +6,9 @@ public class FilePaths{
     public String stringpath = "strings.txt";
 
     public static FilePaths BuildPath(OptionsCMD opts){
+        if (!opts.flagIn){
+            throw new IllegalArgumentException("No input files provided");
+        }
         FilePaths p = new FilePaths();
         if (opts.flagO && opts.flagP){
             p.intpath = opts.oPath+opts.pPath+p.intpath;

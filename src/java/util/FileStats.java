@@ -21,12 +21,12 @@ public class FileStats{
             for(String i : intRes){
                 System.out.println(i);
             }
-
+            System.out.println();
             System.out.println("Num Of Floats: "+floatNum);
             for(String f : floatRes){
                 System.out.println(f);
             }
-
+            System.out.println();
             System.out.println("Num Of Strings: "+stringNum);
             for(String s : stringRes){
                 System.out.println(s);
@@ -36,7 +36,7 @@ public class FileStats{
     
     public static String[] statInt (String[] ints) {
         if (ints == null || ints.length == 0){
-            return new String[]{"no ints"};
+            return new String[]{"No Ints"};
         }
         long[] nums = new long[ints.length];
         for (int i = 0; i < ints.length; i++) {
@@ -58,13 +58,13 @@ public class FileStats{
         return new String[]{
             "Min Int: " + min,
             "Max Int: " + max,
-            "Sum Int: " + sum,
-            "Average Int: " + avg
+            "Sum Int: " + String.format("%.4E", sum),
+            "Average Int: " + String.format("%.4E", avg),
         };
     }
     public static String[] statFloat (String[] floats) {
         if (floats == null || floats.length == 0){
-            return new String[]{"no ints"};
+            return new String[]{"No Floats"};
         }
         float[] nums = new float[floats.length];
         for (int i = 0; i < floats.length; i++) {
@@ -86,13 +86,13 @@ public class FileStats{
         return new String[]{
             "Min Float: " + min,
             "Max Float: " + max,
-            "Sum Float: " + sum,
-            "Average Float: " + avg
+            "Sum Float: " + String.format("%.4f", sum),
+            "Average Float: " + String.format("%.4f", avg),
         };
     }
     public static String[] statString (String[] strings) {
         if (strings == null || strings.length == 0){
-            return new String[]{"no ints"};
+            return new String[]{"No Strings"};
         }
 
         int min = strings[0].length();
