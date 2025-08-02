@@ -58,8 +58,8 @@ public class FileStats{
         return new String[]{
             "Min Int: " + min,
             "Max Int: " + max,
-            "Sum Int: " + String.format("%.4E", sum),
-            "Average Int: " + String.format("%.4E", avg),
+            "Sum Int: " + sum,
+            "Average Int: " + avg,
         };
     }
     public static String[] statFloat (String[] floats) {
