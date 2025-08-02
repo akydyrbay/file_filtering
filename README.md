@@ -55,11 +55,9 @@ your-project/
 │           ├── FileStats.java
 │           ├── FilePaths.java
 │           └── OptionsCMD.java
-├── inputFiles/
-│   ├── in1.txt
-│   └── in2.txt
 ├── out/
-├── util.jar
+├── in1.txt
+├── in2.txt
 ├── build.sh
 ```
 
