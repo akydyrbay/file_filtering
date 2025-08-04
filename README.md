@@ -35,12 +35,37 @@ java -jar util.jar -s -a -p sample- in1.txt in2.txt
 - sample-floats.txt
 - sample-strings.txt
 
-### Cборка
-```bash
+:
+
+### Установка и запуск Java-программы
+
+Клонируйте репозиторий:
+
+```bash 
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+Соберите проект (выберите один из способов):
+```
+
+Вариант 1: Сборка вручную
+
+```bash 
 javac -d out src/java/util/*.java
 jar cfe util.jar util.Main -C out .
-or
+```
+
+Вариант 2: Сборка с помощью скрипта build.sh
+- Убедитесь, что файл build.sh исполняемый:
+
+```bash
+chmod +x build.sh
 ./build.sh
+```
+
+Запустите программу:
+
+```bash
+java -jar util.jar [аргументы]
 ```
 
 ### Структура проекта
