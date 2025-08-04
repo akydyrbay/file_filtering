@@ -35,8 +35,6 @@ java -jar util.jar -s -a -p sample- in1.txt in2.txt
 - sample-floats.txt
 - sample-strings.txt
 
-:
-
 ### Установка и запуск Java-программы
 
 Клонируйте репозиторий:
@@ -44,9 +42,9 @@ java -jar util.jar -s -a -p sample- in1.txt in2.txt
 ```bash 
 git clone https://github.com/your-username/your-repo.git
 cd your-repo
-Соберите проект (выберите один из способов):
 ```
 
+Соберите проект (выберите один из способов):
 Вариант 1: Сборка вручную
 
 ```bash 
